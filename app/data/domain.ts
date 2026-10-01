@@ -3,18 +3,14 @@
 export const DOMAIN = 'duvar.com'
 export const SITE_URL = 'https://www.duvar.com'
 
-// Set to a number (e.g. 25000) to show a fixed asking price; null = "open to offers".
-export const ASKING_PRICE: number | null = null
+// Fixed asking price, shown in the hero and contact block. null = "open to offers" mode.
+export const ASKING_PRICE: number | null = 20000
 export const PRICE_CURRENCY = 'USD'
 
-// Contact details, base64-encoded so they aren't sitting in the HTML for
-// scrapers — they're decoded in the browser after the page loads.
-// Encode with: node -e "console.log(btoa('teklif@example.com'))"
-// TODO: replace the placeholders with the real email and phone (+90…, digits/spaces only).
-export const CONTACT = {
-  email: 'b3JuZWtAZXBvc3RhLmNvbQ==', // ornek@eposta.com
-  phone: 'KzkwIDUwMCAwMDAgMDAgMDA=', // +90 500 000 00 00
-}
+// Contact email, base64-encoded so it isn't sitting in the HTML for
+// scrapers — it's decoded in the browser after the page loads.
+// Encode with: node -e "console.log(btoa('name@example.com'))"
+export const CONTACT_EMAIL = 'c2FoaW5kYUBpY2xvdWQuY29t'
 
 export const LANGS = ['tr', 'en'] as const
 export type Lang = (typeof LANGS)[number]
@@ -24,7 +20,7 @@ export const COPY = {
     locale: 'tr-TR',
     title: 'duvar.com satılık — tek kelime, beş harf, .com',
     description:
-      'duvar.com alan adı satılık. Kısa, akılda kalıcı, herkesin bildiği bir Türkçe kelime. İnşaat, dekorasyon, medya ve güvenlik markaları için ideal. Teklifinizi iletin.',
+      'duvar.com alan adı satılık. Kısa, akılda kalıcı, herkesin bildiği bir Türkçe kelime. İnşaat, dekorasyon, medya ve güvenlik markaları için ideal. Sabit fiyat: 20.000 USD.',
     badge: 'Satılık alan adı',
     sale: 'satılık.',
     sign: 'Satılık',
@@ -32,8 +28,9 @@ export const COPY = {
     tagline: 'Herkesin bildiği bir kelime. Şimdi sizin markanız olabilir.',
     sub: 'Beş harf, tek kelime, .com. Markanızı ilk günden akılda kalan, güven veren bir adres üzerine kurun.',
     cta: 'Teklif ver',
+    ctaBuy: 'Satın al',
     openToOffers: 'Ciddi tekliflere açık',
-    priceFixed: (p: string) => `Fiyat: ${p}`,
+    priceLabel: 'Sabit fiyat',
     whyEyebrow: 'Neden duvar.com?',
     whyTitle: 'Akılda kalan bir isim, <em>sağlam</em> bir temel.',
     why: [
@@ -45,22 +42,19 @@ export const COPY = {
     fitsEyebrow: 'Kimler için?',
     fitsTitle: 'Bir kelime, <em>birçok</em> sektör.',
     fits: ['İnşaat', 'Yapı market', 'Mimarlık', 'Dekorasyon', 'Duvar kağıdı', 'Boya', 'Tablo & sanat', 'Emlak', 'Sosyal medya', 'Güvenlik duvarı', 'Haber & medya'],
-    contactEyebrow: 'Teklif ver',
+    contactEyebrow: 'Satın al',
     contactTitle: '<em>duvar.com</em> sizin olsun.',
-    contactBody: 'Fiyat ve devir süreci için e-posta, telefon ya da WhatsApp üzerinden ulaşın. Her ciddi teklife dönüş yapılır.',
+    contactBody: 'Satın almak ya da devir sürecini konuşmak için e-posta ile ulaşın.',
     contactNote: 'Ödeme ve alan adı devri, isterseniz güvenli emanet (escrow) hizmeti üzerinden yapılabilir.',
     email: 'E-posta',
-    phone: 'Telefon',
-    whatsapp: 'WhatsApp',
-    mailSubject: 'duvar.com teklifi',
-    waText: 'Merhaba, duvar.com alan adı için teklif vermek istiyorum.',
+    mailSubject: 'duvar.com satın alma',
     footer: 'Bu alan adı satılıktır.',
   },
   en: {
     locale: 'en-US',
     title: 'duvar.com is for sale — one word, five letters, .com',
     description:
-      'The domain duvar.com is for sale. Short, memorable, a word every Turkish speaker knows. Ideal for construction, décor, media and security brands. Make an offer.',
+      'The domain duvar.com is for sale. Short, memorable, a word every Turkish speaker knows. Ideal for construction, décor, media and security brands. Fixed price: 20,000 USD.',
     badge: 'Domain for sale',
     sale: 'is for sale.',
     sign: 'For sale',
@@ -68,8 +62,9 @@ export const COPY = {
     tagline: 'A word everyone knows. Now it can be your brand.',
     sub: '“Duvar” means wall in Turkish. Five letters, one word, .com — build your brand on an address that sticks from day one.',
     cta: 'Make an offer',
+    ctaBuy: 'Buy now',
     openToOffers: 'Open to serious offers',
-    priceFixed: (p: string) => `Price: ${p}`,
+    priceLabel: 'Fixed price',
     whyEyebrow: 'Why duvar.com?',
     whyTitle: 'A memorable name, a <em>solid</em> foundation.',
     why: [
@@ -81,15 +76,12 @@ export const COPY = {
     fitsEyebrow: 'Who is it for?',
     fitsTitle: 'One word, <em>many</em> industries.',
     fits: ['Construction', 'Building supplies', 'Architecture', 'Interior design', 'Wallpaper', 'Paint', 'Wall art', 'Real estate', 'Social media', 'Firewall & security', 'News & media'],
-    contactEyebrow: 'Make an offer',
+    contactEyebrow: 'Buy now',
     contactTitle: 'Make <em>duvar.com</em> yours.',
-    contactBody: 'Get in touch by email, phone or WhatsApp to discuss price and transfer. Every serious offer gets a reply.',
+    contactBody: 'To buy it or talk through the transfer, get in touch by email.',
     contactNote: 'Payment and transfer can go through a secure escrow service if you prefer.',
     email: 'Email',
-    phone: 'Phone',
-    whatsapp: 'WhatsApp',
-    mailSubject: 'Offer for duvar.com',
-    waText: 'Hi, I would like to make an offer for duvar.com.',
+    mailSubject: 'Buying duvar.com',
     footer: 'This domain is for sale.',
   },
 } as const

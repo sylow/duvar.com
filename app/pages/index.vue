@@ -21,9 +21,7 @@ useHead({
   link: [{ rel: 'canonical', href: SITE_URL }],
 })
 
-const price = computed(() =>
-  ASKING_PRICE ? t.value.priceFixed(formatPrice(ASKING_PRICE, PRICE_CURRENCY, t.value.locale)) : null,
-)
+const price = computed(() => (ASKING_PRICE ? formatPrice(ASKING_PRICE, PRICE_CURRENCY, t.value.locale) : null))
 
 function goToContact() {
   document.getElementById('teklif')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -48,11 +46,11 @@ function goToContact() {
           <p class="tagline">{{ t.tagline }}</p>
           <p class="sub">{{ t.sub }}</p>
           <div class="hero-actions">
-            <button type="button" class="btn" @click="goToContact">{{ t.cta }}</button>
-            <span class="hero-note">{{ price ?? t.openToOffers }}</span>
+            <button type="button" class="btn" @click="goToContact">{{ price ? t.ctaBuy : t.cta }}</button>
+            <span v-if="!price" class="hero-note">{{ t.openToOffers }}</span>
           </div>
         </div>
-        <HeroWall :sign="t.sign" :sign-sub="t.signSub" />
+        <HeroWall :sign="t.sign" :sign-sub="t.signSub" :price="price" :price-label="t.priceLabel" />
       </section>
 
       <section class="section wrap">
@@ -80,6 +78,7 @@ function goToContact() {
           <div class="cta-glow" />
           <p class="eyebrow">{{ t.contactEyebrow }}</p>
           <h2 class="h2" v-html="t.contactTitle" />
+          <p v-if="price" class="cta-price">{{ t.priceLabel }}: <strong>{{ price }}</strong></p>
           <p class="cta-body">{{ t.contactBody }}</p>
           <ContactOptions />
           <p class="cta-note">{{ t.contactNote }}</p>
