@@ -39,15 +39,28 @@ main { flex: 1; position: relative; z-index: 1; }
   0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
   70%, 100% { box-shadow: 0 0 0 8px transparent; }
 }
-.domain { margin: 24px 0 0; font-family: var(--font-serif); font-weight: 400; font-size: clamp(64px, 9vw, 112px); line-height: 0.95; letter-spacing: -0.035em; color: var(--text); }
+.domain { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: clamp(64px, 9vw, 112px); line-height: 0.95; letter-spacing: -0.035em; color: var(--text); }
 .domain span { color: var(--accent); font-style: italic; }
+.domain-sale { display: block; margin-top: 6px; font-style: normal; font-size: 0.56em; letter-spacing: -0.02em; color: var(--text); }
 .tagline { margin: 22px 0 0; max-width: 24ch; font-family: var(--font-serif); font-size: clamp(22px, 2.6vw, 28px); line-height: 1.25; color: var(--text); }
 .sub { margin: 12px 0 0; max-width: 44ch; font-size: 16px; line-height: 1.6; color: var(--text-2); }
 .hero-actions { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
 .hero-note { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
 
-.wall { width: 100%; max-width: 532px; justify-self: center; display: flex; flex-direction: column; gap: 8px; }
+.wall { position: relative; width: 100%; max-width: 532px; justify-self: center; display: flex; flex-direction: column; gap: 8px; }
 .wall-row { display: flex; gap: 8px; }
+/* The sign: hung slightly crooked over the top courses, two "nails" on top. */
+.sale-sign {
+  position: absolute; z-index: 1; top: 14px; left: 50%; transform: translateX(-50%) rotate(-3deg);
+  display: flex; flex-direction: column; align-items: center; gap: 2px; white-space: nowrap;
+  padding: 14px 34px 16px; border-radius: 10px; background: var(--accent); color: var(--text-on-accent);
+  box-shadow: inset 0 0 0 3px var(--accent), inset 0 0 0 5px color-mix(in srgb, var(--text-on-accent) 85%, transparent), 0 14px 30px color-mix(in srgb, var(--accent) 32%, transparent);
+}
+.sale-sign::before, .sale-sign::after { content: ''; position: absolute; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: color-mix(in srgb, var(--text-on-accent) 85%, transparent); }
+.sale-sign::before { left: 14px; }
+.sale-sign::after { right: 14px; }
+.sale-sign-main { font-family: var(--font-sans); font-weight: 700; font-size: clamp(30px, 4vw, 44px); line-height: 1.05; letter-spacing: 0.1em; text-transform: uppercase; }
+.sale-sign-sub { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.9; }
 .brick { flex: 2 1 0; height: 46px; box-sizing: border-box; border-radius: 6px; border: 1.5px solid color-mix(in srgb, var(--accent) 28%, transparent); }
 .brick--half { flex: 1 1 0; }
 .brick--com {
@@ -115,6 +128,9 @@ main { flex: 1; position: relative; z-index: 1; }
   .hero { grid-template-columns: 1fr; gap: 48px; padding: 48px 24px 0; min-height: 0; }
   .brick { height: 36px; }
   .brick--com { font-size: 18px; }
+  .sale-sign { top: 8px; padding: 10px 24px 12px; }
+  .sale-sign-main { font-size: 28px; }
+  .sale-sign-sub { font-size: 10px; }
 }
 
 @media (max-width: 560px) {

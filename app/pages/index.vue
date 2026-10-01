@@ -44,8 +44,7 @@ function goToContact() {
     <main>
       <section class="hero">
         <div class="hero-text">
-          <p class="badge"><span class="dot" />{{ t.badge }}</p>
-          <h1 class="domain">duvar<span>.com</span></h1>
+          <h1 class="domain">duvar<span>.com</span> <em class="domain-sale">{{ t.sale }}</em></h1>
           <p class="tagline">{{ t.tagline }}</p>
           <p class="sub">{{ t.sub }}</p>
           <div class="hero-actions">
@@ -53,7 +52,7 @@ function goToContact() {
             <span class="hero-note">{{ price ?? t.openToOffers }}</span>
           </div>
         </div>
-        <HeroWall />
+        <HeroWall :sign="t.sign" :sign-sub="t.signSub" />
       </section>
 
       <section class="section wrap">
