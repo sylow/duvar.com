@@ -36,15 +36,6 @@ export default defineNuxtConfig({
     preset: 'vercel',
   },
 
-  runtimeConfig: {
-    public: {
-      // Offer form endpoint — the shared sylow forms API. Override locally with
-      // NUXT_PUBLIC_FORMS_ENDPOINT (e.g. http://localhost:3013/api/v1/forms/duvar.com/offer).
-      // Production origins must be in the API's FORMS_ALLOWED_ORIGINS.
-      formsEndpoint: 'https://api.sylow.net/api/v1/forms/duvar.com/offer',
-    },
-  },
-
   typescript: {
     strict: true,
   },
